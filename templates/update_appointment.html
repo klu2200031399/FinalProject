@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Appointment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            color: #333;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        form {
+            width: 50%;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"], input[type="datetime-local"], select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h2>Update Appointment</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="doctor">Doctor:</label>
+            <input type="text" id="doctor" name="doctor" value="{{ appointment.doctor }}">
+        </div>
+        <div class="form-group">
+            <label for="specialization">Specialization:</label>
+            <input type="text" id="specialization" name="specialization" value="{{ appointment.specialization }}">
+        </div>
+        <div class="form-group">
+            <label for="appointment_time">Appointment Time:</label>
+            <input type="datetime-local" id="appointment_time" name="appointment_time" value="{{ appointment.appointment_time|date:'Y-m-d\TH:i' }}">
+        </div>
+        <div class="form-group">
+            <label for="patient">Patient:</label>
+            <input type="text" id="patient" name="patient" value="{{ appointment.patient }}">
+        </div>
+        <div class="form-group">
+            <label for="num_days">Number of Days:</label>
+            <input type="number" id="num_days" name="num_days" value="{{ appointment.num_days }}">
+        </div>
+        <input type="submit" value="Update Appointment">
+    </form>
+</body>
+</html>

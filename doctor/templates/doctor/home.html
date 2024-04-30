@@ -1,0 +1,21 @@
+<!-- doctor/templates/doctor/home.html -->
+
+{% extends 'doctor/base_doctor.html' %}
+
+{% block title %}Home - Ohna Doctor{% endblock %}
+
+{% block content %}
+<div class="container" style="text-align: center;">
+    <div class="row">
+        <div class="col-md-6 mx-auto" style="margin-top: 100px;">
+            <h1 style="font-size: 36px; font-weight: bold;">Welcome to Ohna Doctor</h1>
+            <p style="font-size: 18px; line-height: 1.6;">Your dedicated platform for providing exceptional medical care.</p>
+            <a href="{% url 'new_home' %}" class="btn btn-primary btn-lg" style="background-color: #4CAF50; border-color: #4CAF50;">Get Started</a>
+            <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                {% csrf_token %}
+                <button type="submit" cass="btn btn-danger btn-lg" style="margin-left: 10px;">Logout</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

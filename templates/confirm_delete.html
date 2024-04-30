@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm Delete</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+            margin-top: 0;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #666;
+            margin-top: 20px;
+            margin-bottom: 40px;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .btn-container button {
+            background-color: #dc3545;
+            color: #fff;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+
+        .btn-container button:hover {
+            background-color: #bb2d3b;
+        }
+
+        .btn-container button:last-child {
+            margin-right: 0;
+        }
+
+        .btn-container button.cancel-btn {
+            background-color: #007bff;
+            margin-left: 10px; /* Add margin to the left side of the cancel button */
+        }
+
+        .btn-container button.cancel-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Confirm Deletion</h2>
+        <p>Are you sure you want to delete this appointment?</p>
+        <div class="btn-container">
+            <form action="{% url 'delete_appointment' appointment.pk %}" method="post">
+                {% csrf_token %}
+                <button type="submit">Delete</button>
+            </form>
+            <button class="cancel-btn" onclick="goBack()">Cancel</button>
+        </div>
+    </div>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>
